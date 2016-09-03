@@ -15,17 +15,17 @@ public class HabitDbHelper extends SQLiteOpenHelper {
     /**
      * Database version incrementation.
      */
-    public static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
 
     /**
      * Database Name
      */
-    static final String DATABASE_NAME = "habit.db";
+    private static final String DATABASE_NAME = "habit.db";
 
     /**
      * Database key to delete table entries.
      */
-    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF IT EXISTS " + HabitEntry.TABLE_NAME;
+    public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + HabitEntry.TABLE_NAME;
 
     /**
      * Constructs a new instance of {@link HabitDbHelper}

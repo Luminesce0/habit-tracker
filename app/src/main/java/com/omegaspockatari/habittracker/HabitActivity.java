@@ -182,7 +182,7 @@ public class HabitActivity extends AppCompatActivity {
      */
     private void deleteHabitInfo() {
         SQLiteDatabase db = habitDbHelper.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS " + HabitEntry.TABLE_NAME);
+        db.execSQL(habitDbHelper.SQL_DELETE_ENTRIES);
     }
 
 
