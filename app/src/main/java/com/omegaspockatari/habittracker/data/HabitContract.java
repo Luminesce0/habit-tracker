@@ -9,6 +9,11 @@ public class HabitContract {
 
     /**
      * Inner class that defines constant values for the habits database table.
+     *
+     * Would it be possible to create multiple valid HabitEntry implementations here?
+     * Perhaps it would be possible to change the TABLE_NAME in some way accessible to the user.
+     *
+     * More to find out later!
      */
     public static final class HabitEntry implements BaseColumns {
 
@@ -18,7 +23,8 @@ public class HabitContract {
         public final static String COLUMN_HABIT_DATE = "date";
         public final static String COLUMN_HABIT_TASK = "task";
         public final static String COLUMN_HABIT_COMPLETE = "complete";
-        public final static String COLUMN_HABIT_PERSONAL_NOTES = "personal notes";
+        /** Why doesn't "\"personal notes\"" work? So confusing. */
+        public final static String COLUMN_HABIT_PERSONAL_NOTES = "notes";
 
         /** Below are listed possibilities for complete */
 

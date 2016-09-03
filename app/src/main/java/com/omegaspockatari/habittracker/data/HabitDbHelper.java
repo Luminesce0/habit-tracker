@@ -42,11 +42,11 @@ public class HabitDbHelper extends SQLiteOpenHelper {
         /**
          * SQL code to instantiate a habit table when run.
          */
-        final String SQL_CREATE_HABIT_TABLE = "CREATE TABLE" + HabitEntry.TABLE_NAME + "( "
+        final String SQL_CREATE_HABIT_TABLE = "CREATE TABLE " + HabitEntry.TABLE_NAME + "( "
                 +HabitEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +HabitEntry.COLUMN_HABIT_DATE + " TEXT NOT NULL DEFAULT \"Unknown Date\","
-                +HabitEntry.COLUMN_HABIT_TASK + " TEXT NOT NULL DEFAULT \"Unknown Task\","
-                +HabitEntry.COLUMN_HABIT_COMPLETE + " INTEGER NOT NULL DEFAULT 0,"
+                +HabitEntry.COLUMN_HABIT_DATE + " TEXT DEFAULT \"Unknown Date\","
+                +HabitEntry.COLUMN_HABIT_TASK + " TEXT DEFAULT \"Unknown Task\","
+                +HabitEntry.COLUMN_HABIT_COMPLETE + " INTEGER DEFAULT 0,"
                 +HabitEntry.COLUMN_HABIT_PERSONAL_NOTES + " TEXT);";
 
         /**
@@ -59,8 +59,10 @@ public class HabitDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        /** Only relevant should the database be upgraded */
     }
+
+
 
 
 }
