@@ -29,7 +29,9 @@ public class HabitActivity extends AppCompatActivity {
         insertHabitInfo();
         readHabitInfo();
         updateHabitInfo();
+        readHabitInfo();
         deleteHabitInfo();
+        habitDbHelper.onDeleteDatabase(this, habitDbHelper);
 
     }
 
@@ -150,13 +152,13 @@ public class HabitActivity extends AppCompatActivity {
      * Data updating
      */
     private void updateHabitInfo() {
-        SQLiteDatabase db = habitDbHelper.getReadableDatabase();
+        SQLiteDatabase db = habitDbHelper.getWritableDatabase();
 
         /**
          * New Value for one column
          */
         ContentValues values = new ContentValues();
-        values.put(HabitEntry.COLUMN_HABIT_COMPLETE, HabitEntry.COMPLETE_UNKNOWN);
+        values.put(HabitEntry.COLUMN_HABIT_COMPLETE, HabitEntry.COMPLETE_TRUE);
 
         /**
          * Which row to update based on the title.
@@ -166,14 +168,14 @@ public class HabitActivity extends AppCompatActivity {
         /**
          * http://stackoverflow.com/questions/17481981/using-int-value-in-selection-args-argument-of-sqlite-for-android
          */
-        String[] selectionArgs = { String.valueOf(HabitEntry.COMPLETE_TRUE) };
+        String[] selectionArgs = { String.valueOf(HabitEntry.COMPLETE_FALSE) };
 
-        int count = db.update(HabitEntry.TABLE_NAME,
+        long newRowId = db.update(HabitEntry.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
 
-
+        db.close();
         readHabitInfo();
     }
 
