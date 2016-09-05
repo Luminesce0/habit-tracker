@@ -76,7 +76,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
      */
     public void onDeleteDatabase(Context context, HabitDbHelper db) {
         db.close();
-        context.deleteDatabase(HabitEntry.TABLE_NAME);
+        context.deleteDatabase(DATABASE_NAME);
     }
 
 
