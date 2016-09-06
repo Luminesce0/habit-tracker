@@ -25,7 +25,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
     /**
      * Database key to delete table entries.
      */
-    public static final String SQL_DELETE_ENTRIES = "delete from " + HabitEntry.TABLE_NAME;
+    public static final String SQL_DELETE_ENTRIES = "delete * from " + HabitEntry.TABLE_NAME;
 
     /**
      * Constructs a new instance of {@link HabitDbHelper}

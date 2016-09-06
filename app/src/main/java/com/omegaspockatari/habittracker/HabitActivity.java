@@ -15,6 +15,7 @@ public class HabitActivity extends AppCompatActivity {
     private static final String LOG_TAG = HabitActivity.class.getSimpleName();
 
     private HabitDbHelper habitDbHelper;
+    private Cursor mCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,11 @@ public class HabitActivity extends AppCompatActivity {
         habitDbHelper = new HabitDbHelper(this);
 
         insertHabitInfo();
-        readHabitInfo();
+        mCursor = readHabitInfo();
+        mCursor.close();
         updateHabitInfo();
-        readHabitInfo();
+        mCursor = readHabitInfo();
+        mCursor.close();
         deleteHabitInfo();
         habitDbHelper.onDeleteDatabase(this, habitDbHelper);
 
@@ -77,7 +80,7 @@ public class HabitActivity extends AppCompatActivity {
      * Would display information about the database on screen but currently only offers information
      * via Logs.
      */
-    private void readHabitInfo() {
+    private Cursor readHabitInfo() {
 
         /**
          * Open a database to read from it, or create one if no readable database exists.
@@ -144,8 +147,12 @@ public class HabitActivity extends AppCompatActivity {
 
         /**
          * Close cursor that is being read from. Releases resources and prevents memory leaks.
+         *
+         * No longer closed since method must return a cursor?
          */
-        cursor.close();
+
+        return cursor;
+
     }
 
     /**
